@@ -18,7 +18,7 @@ function App() {
       })
       .then((response) => {
         console.log('Response received: ', response.data);
-        setGalleryList(reponse.data);
+        setGalleryList(response.data);
       }) 
       .catch((error) => {
         console.log('Error on GET: ', error)
@@ -35,8 +35,7 @@ function App() {
       <div className="App">
         <Header />
         <p>Gallery goes here</p>
-        <GalleryList />
-        <img src="images/goat_small.jpg"/>
+        <GalleryList galleryList={galleryList}/>
       </div>
     );
 }

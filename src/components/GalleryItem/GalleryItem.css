@@ -1,0 +1,16 @@
+.single-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: brown;
+}
+
+.MuiCard-root {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: brown;
+    background-color: brown;
+}
