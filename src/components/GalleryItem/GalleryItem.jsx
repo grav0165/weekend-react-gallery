@@ -8,9 +8,16 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function GalleryItem (props) {
-
+    const darkTheme = createTheme({
+        palette: {
+          mode: 'dark',
+        },
+        spacing: 4,
+      });
     const[showCard, setShowCard] = useState(false);
 
     const handleCard = () => {
@@ -20,6 +27,10 @@ function GalleryItem (props) {
 
     const handleLike = () => {
         console.log('Like button clicked');
+        props.likePost(
+            {id: props.item.id},
+        )
+        console.log(props.item.id);
     }
 
     let content
@@ -41,7 +52,7 @@ function GalleryItem (props) {
         }
     return (
             <div className="single-card">
-            
+            <ThemeProvider theme={darkTheme}>
               <Card sx={{ width: 345 }}>
                 {content}
                 
@@ -51,7 +62,7 @@ function GalleryItem (props) {
                 </CardActions>
                 <span>Likes: </span>{props.item.likes}
                 <p></p>
-              </Card></div>
+              </Card></ThemeProvider></div>
             );
           }
 

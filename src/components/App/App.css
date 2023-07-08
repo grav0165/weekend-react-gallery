@@ -13,3 +13,28 @@
   font-size: 1.5em;
 }
 
+body { 
+  background-color: #f9d7f8;
+  display: flex;
+  flex-direction: row;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title-block {
+  background-color: #8147c2;
+  color: #f9d7f8;
+  margin: 1em 14em 1em 14em;
+  padding: 0.5em 0em 0.5em 0em;
+  font-size: 20px;
+  border: 2px solid #c2ebd5;
+  border-radius: 5px;
+  box-shadow: 1px 1px black;
+}
+
+
+/* 
+background:  #f9d7f8
+primary : ##8147c2
+secondary: #c2ebd5
+accent: #c28147
+*/

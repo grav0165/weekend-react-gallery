@@ -30,12 +30,29 @@ function App() {
       getGallery();
     }, []);
 
+    // PUT request to update like count
+    const likePost = (itemToUpdate) => {
+      console.log('in likePost grabbing itemToUpdate: ', itemToUpdate);
+      axios({
+        method: "PUT",
+        url: `/gallery/${itemToUpdate.id}`
+      })
+      .then((response) => {
+        getGallery();
+      })
+      .catch((error) => {
+        alert("Error in UPDATEing item in database: ", error);
+        console.log(error);
+      })
+    }
 
     return (
       <div className="App">
         <Header />
-        <p>Gallery goes here</p>
-        <GalleryList galleryList={galleryList}/>
+        <div class="title-block">
+        <p>Life Experiences Which Got Me to Who I am Today</p>
+        </div>
+        <GalleryList galleryList={galleryList} likePost={likePost}/>
       </div>
     );
 }
