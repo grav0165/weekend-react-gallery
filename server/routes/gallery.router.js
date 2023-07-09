@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const galleryItems = require('../modules/gallery.data');
+const pool = require('../modules/pool.js');
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
@@ -18,7 +18,17 @@ router.put('/:id', (req, res) => {
 
 // GET Route
 router.get('/', (req, res) => {
-    res.send(galleryItems);
+    const sqlQuery = `SELECT * FROM gallery ORDER BY id ASC`;
+    pool.query(sqlQuery)
+    .then((result) => {
+        console.log('Got information back from database: ', result)
+        res.send(result.rows);
+    })
+    .catch((error) => {
+        console.log(`Error in making database query of ${sqlQuery}, received error: `, error);
+        res.sendStatus(500);
+    })
+    
 }); // END GET Route
 
 module.exports = router;
