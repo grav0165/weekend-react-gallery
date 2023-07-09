@@ -2,7 +2,7 @@ CREATE TABLE gallery (
 	id SERIAL PRIMARY KEY,
     path VARCHAR(255) NOT NULL,
 	description VARCHAR(255) NOT NULL, 
-    likes INTEGER
+    likes INTEGER DEFAULT 0
 );
 
 INSERT INTO gallery (path, description)

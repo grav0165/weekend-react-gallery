@@ -6,14 +6,28 @@ const pool = require('../modules/pool.js');
 
 // PUT Route
 router.put('/:id', (req, res) => {
-    console.log(req.params);
+    console.log('Inside UPDATE request', req.params);
+    sqlParam = req.body
+    console.log('Inside of req.body: ', req.body)
     const galleryId = req.params.id;
-    for(const galleryItem of galleryItems) {
-        if(galleryItem.id == galleryId) {
-            galleryItem.likes += 1;
-        }
-    }
-    res.sendStatus(200);
+    // // for(const galleryItem of galleryItems) {
+    // //     if(galleryItem.id == galleryId) {
+    // //         galleryItem.likes += 1;
+    // //     }
+    // }
+    let sqlQuery = `
+    UPDATE "gallery"
+    SET "likes"=(likes+1)
+    WHERE "id"=$1`
+    pool.query(sqlQuery, [galleryId])
+    .then(result => {
+        res.sendStatus(200);
+        console.log('Like added to post');
+    })
+    .catch(error => {
+        console.log('Error in updating task: ', error);
+        res.sendStatus(500);
+    })
 }); // END PUT Route
 
 // GET Route
