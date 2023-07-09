@@ -53,6 +53,8 @@ function App() {
         <div className="title-block">
         <p>Life Experiences Which Got Me to Who I am Today</p>
         </div></div>
+        <br/>
+        <br />
         <GalleryList galleryList={galleryList} likePost={likePost}/>
       </div>
     );
