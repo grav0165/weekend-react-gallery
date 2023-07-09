@@ -53,10 +53,10 @@ function GalleryItem(props) {
     return (
         <div className="single-card">
             <ThemeProvider theme={darkTheme}>
-                <Card sx={{ width: 345 }} elevation={3}>
+                <Card sx={{ width: 345, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}} elevation={3}>
                     {content}
                     <CardActions>
-                        <span><Button size="small" onClick={handleLike}>Like</Button></span>
+                        <span><Button size="large" onClick={handleLike}>Like</Button></span>
                     </CardActions>
                     <span className="like-button">Likes: </span>{props.item.likes}
                     <p></p>
