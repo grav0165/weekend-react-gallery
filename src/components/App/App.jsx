@@ -49,9 +49,10 @@ function App() {
     return (
       <div className="App">
         <Header />
-        <div class="title-block">
+        <div className='outside-title'>
+        <div className="title-block">
         <p>Life Experiences Which Got Me to Who I am Today</p>
-        </div>
+        </div></div>
         <GalleryList galleryList={galleryList} likePost={likePost}/>
       </div>
     );

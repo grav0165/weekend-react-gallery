@@ -11,14 +11,14 @@ import { useTheme } from '@mui/material/styles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-function GalleryItem (props) {
+function GalleryItem(props) {
     const darkTheme = createTheme({
         palette: {
-          mode: 'dark',
+            mode: 'dark',
         },
         spacing: 4,
-      });
-    const[showCard, setShowCard] = useState(false);
+    });
+    const [showCard, setShowCard] = useState(false);
 
     const handleCard = () => {
         setShowCard(!showCard)
@@ -28,43 +28,43 @@ function GalleryItem (props) {
     const handleLike = () => {
         console.log('Like button clicked');
         props.likePost(
-            {id: props.item.id},
+            { id: props.item.id },
         )
         console.log(props.item.id);
     }
 
     let content
-    if(!showCard) {
-            content = <CardActionArea onClick={handleCard} ><CardMedia
-                  sx={{ height: 200 }}
-                  image={props.item.path}
-                  alt={props.item.description}
-                />
-                </CardActionArea>
-        } else {
-            content = <CardActionArea onClick={handleCard} ><CardContent sx={{ height: 200}}><div className="inside-card">
+    if (!showCard) {
+        content = <CardActionArea onClick={handleCard} ><CardMedia
+            sx={{ height: 200 }}
+            image={props.item.path}
+            alt={props.item.description}
+        />
+        </CardActionArea>
+    } else {
+        content = <CardActionArea onClick={handleCard} ><CardContent sx={{ height: 200 }}><div className="inside-card">
             <Typography gutterBottom variant="h5" component="div">
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {props.item.description}
+                {props.item.description}
             </Typography></div>
-          </CardContent></CardActionArea>
-        }
+        </CardContent></CardActionArea>
+    }
     return (
-            <div className="single-card">
+        <div className="single-card">
             <ThemeProvider theme={darkTheme}>
-              <Card sx={{ width: 345 }}>
-                {content}
-                
-
-                <CardActions>
-                  <span><Button size="small" onClick={handleLike}>Like</Button></span>
-                </CardActions>
-                <span>Likes: </span>{props.item.likes}
-                <p></p>
-              </Card></ThemeProvider></div>
-            );
-          }
+                <Card sx={{ width: 345 }} elevation={3}>
+                    {content}
+                    <CardActions>
+                        <span><Button size="small" onClick={handleLike}>Like</Button></span>
+                    </CardActions>
+                    <span className="like-button">Likes: </span>{props.item.likes}
+                    <p></p>
+                </Card>
+            </ThemeProvider>
+        </div>
+    );
+}
 
 
 
